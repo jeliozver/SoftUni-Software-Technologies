@@ -1,0 +1,31 @@
+/* CSS Style Sheet */
+.redBorder {
+    border: 5px solid red;
+    border-radius: 10px;
+    background: lightgray;
+    font-size: 24pt;
+    text-align: center;
+}
+#redText {
+    color: red;
+}
+.greenBorder {
+    border: 5px solid green;
+    border-radius: 10px;
+    background: lightgray;
+    font-size: 24pt;
+    text-align: center;
+}
+#greenText {
+    color: green;
+}
+.blueBorder {
+    border: 5px solid blue;
+    border-radius: 10px;
+    background: lightgray;
+    font-size: 24pt;
+    text-align: center;
+}
+#blueText {
+    color: blue;
+}

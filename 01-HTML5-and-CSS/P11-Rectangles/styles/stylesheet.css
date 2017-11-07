@@ -1,0 +1,18 @@
+/* CSS Style Sheet */
+.outsideDiv {
+    border: dotted blue;
+    border-radius: 10px;
+    padding: 20px;
+}
+.middleDiv {
+    border: dashed red;
+    border-radius: 10px;
+    padding: 20px;
+}
+.innerDiv {
+    border: solid green;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-size: 24pt;
+}
