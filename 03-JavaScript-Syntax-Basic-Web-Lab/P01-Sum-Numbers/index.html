@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sum Numbers with HTML and JavaScript</title>
+    </head>
+    <body>
+        <form>
+            First Number
+            <input type="number" id="num1">
+            Second Number
+            <input type="number" id="num2">
+            <input type="button" onclick="sumNumbers()" value="Calculate">
+        </form>
+        <div>
+            Result: <span id="result"></span>
+        </div>
+        <script>
+            function sumNumbers() {
+                let numberOne = document.getElementById('num1').value;
+                let numberTwo = document.getElementById('num2').value;
+
+                let sum = Number(numberOne) + Number(numberTwo);
+
+                document.getElementById('result').innerHTML = sum;
+            }
+        </script>
+    </body>
+</html>
