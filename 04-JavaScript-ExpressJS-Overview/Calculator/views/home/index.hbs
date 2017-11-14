@@ -1,0 +1,63 @@
+<div class="container body-content span=8 offset=2">
+    <div class="well">
+        <form class="form-inline" action="/" method="POST">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-sm-1 ">
+                        <input type="number" step="any" class="form-control" id="leftOperand"
+                               placeholder="n"
+                               name="calculator[leftOperand]"
+                               value="{{calculator.leftOperand}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8 ">
+                        <select class="form-control" name="calculator[operator]" id="operator">
+                            <option value="+"{{selectif calculator.operator '+'}}>+</option>
+                            <option value="-"{{selectif calculator.operator '-'}}>-</option>
+                            <option value="*"{{selectif calculator.operator '*'}}>*</option>
+                            <option value="/"{{selectif calculator.operator '/'}}>/</option>
+                            <option value="mod"{{selectif calculator.operator 'mod'}}>mod</option>
+                            <option value="pow"{{selectif calculator.operator 'pow'}}>pow</option>
+                            <option value="√n"{{selectif calculator.operator '√n'}}>√n</option>
+                            <option value="n!"{{selectif calculator.operator 'n!'}}>n!</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4 ">
+                        <input type="number" step="any" class="form-control" id="rightOperand"
+                               placeholder="y"
+                               name="calculator[rightOperand]"
+                               value="{{calculator.rightOperand}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 ">
+                        <p>=</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="result"
+                               placeholder="Result"
+                               name="result"
+                               value="{{result}}"
+                               readonly="readonly">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <button type="submit" class="btn btn-primary">
+                            Calculate
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
