@@ -25,11 +25,16 @@ function Calculator(leftOperand, rightOperand, operator) {
             case 'pow':
                 result = Math.pow(this.leftOperand, this.rightOperand);
                 break;
-            case '√n':
+            case 'What is X% of Y':
+                result = this.leftOperand / 100 * this.rightOperand;
+                break;
+            case 'X is what % of Y':
+                result = this.leftOperand / this.rightOperand * 100;
+                break;
+            case '√X':
                 result = Math.sqrt(this.leftOperand);
                 break;
-            case 'n!':
-
+            case 'X!':
                 function calcFactorial(n) {
                     let factorial = 1;
                     while (n> 1)
@@ -40,6 +45,7 @@ function Calculator(leftOperand, rightOperand, operator) {
 
                     return factorial;
                 }
+
                 result = calcFactorial(this.leftOperand);
                 break;
         }

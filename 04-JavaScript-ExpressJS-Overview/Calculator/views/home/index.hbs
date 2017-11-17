@@ -5,22 +5,44 @@
                 <div class="form-group">
                     <div class="col-sm-1 ">
                         <input type="number" step="any" class="form-control" id="leftOperand"
-                               placeholder="n"
+                               placeholder="X"
                                name="calculator[leftOperand]"
                                value="{{calculator.leftOperand}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-8 ">
+                    <div class="col-sm-10">
                         <select class="form-control" name="calculator[operator]" id="operator">
-                            <option value="+"{{selectif calculator.operator '+'}}>+</option>
-                            <option value="-"{{selectif calculator.operator '-'}}>-</option>
-                            <option value="*"{{selectif calculator.operator '*'}}>*</option>
-                            <option value="/"{{selectif calculator.operator '/'}}>/</option>
-                            <option value="mod"{{selectif calculator.operator 'mod'}}>mod</option>
-                            <option value="pow"{{selectif calculator.operator 'pow'}}>pow</option>
-                            <option value="√n"{{selectif calculator.operator '√n'}}>√n</option>
-                            <option value="n!"{{selectif calculator.operator 'n!'}}>n!</option>
+                            <option value="+"{{selectif calculator.operator '+'}}>
+                                +
+                            </option>
+                            <option value="-"{{selectif calculator.operator '-'}}>
+                                -
+                            </option>
+                            <option value="*"{{selectif calculator.operator '*'}}>
+                                *
+                            </option>
+                            <option value="/"{{selectif calculator.operator '/'}}>
+                                /
+                            </option>
+                            <option value="mod"{{selectif calculator.operator 'mod'}}>
+                                mod
+                            </option>
+                            <option value="pow"{{selectif calculator.operator 'pow'}}>
+                                pow
+                            </option>
+                            <option value="What is X% of Y"{{selectif calculator.operator 'What is X% of Y'}}>
+                                What is X% of Y
+                            </option>
+                            <option value="X is what % of Y"{{selectif calculator.operator 'X is what % of Y'}}>
+                                X is what % of Y
+                            </option>
+                            <option value="√X"{{selectif calculator.operator '√X'}}>
+                                √X
+                            </option>
+                            <option value="X!"{{selectif calculator.operator 'X!'}}>
+                                X!
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -28,7 +50,7 @@
                 <div class="form-group">
                     <div class="col-sm-4 ">
                         <input type="number" step="any" class="form-control" id="rightOperand"
-                               placeholder="y"
+                               placeholder="Y"
                                name="calculator[rightOperand]"
                                value="{{calculator.rightOperand}}">
                     </div>
