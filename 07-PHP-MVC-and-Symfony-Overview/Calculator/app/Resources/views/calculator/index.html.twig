@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-inline" action="{{ path('index') }}" method="POST">
+                <fieldset>
+                    <div class="form-group">
+                        <div class="col-sm-1 ">
+                            <input type="number" step="any" class="form-control"
+                                   id="leftOperand"
+                                   placeholder="X"
+                                   name="calculator[leftOperand]"
+                                   value="{{ calculator.leftOperand ?? '' }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-16 ">
+                            <select class="form-control" name="calculator[operator]">
+                                <option value="+"
+                                        {{ calculator is defined and calculator.operator == '+' ? 'selected' : '' }}>
+                                    +
+                                </option>
+                                <option value="-"
+                                        {{ calculator is defined and calculator.operator == '-' ? 'selected' : '' }}>
+                                    -
+                                </option>
+                                <option value="*"
+                                        {{ calculator is defined and calculator.operator == '*' ? 'selected' : '' }}>
+                                    *
+                                </option>
+                                <option value="/"
+                                        {{ calculator is defined and calculator.operator == '/' ? 'selected' : '' }}>
+                                    /
+                                </option>
+                                <option value="mod"
+                                        {{ calculator is defined and calculator.operator == 'mod' ? 'selected' : '' }}>
+                                    mod
+                                </option>
+                                <option value="pow"
+                                        {{ calculator is defined and calculator.operator == 'pow' ? 'selected' : '' }}>
+                                    pow
+                                </option>
+                                <option value="And"
+                                        {{ calculator is defined and calculator.operator == 'And' ? 'selected' : '' }}>
+                                    And
+                                </option>
+                                <option value="Or"
+                                        {{ calculator is defined and calculator.operator == 'Or' ? 'selected' : '' }}>
+                                    Or
+                                </option>
+                                <option value="Xor"
+                                        {{ calculator is defined and calculator.operator == 'Xor' ? 'selected' : '' }}>
+                                    Xor
+                                </option>
+                                <option value="Not"
+                                        {{ calculator is defined and calculator.operator == 'Not' ? 'selected' : '' }}>
+                                    Not
+                                </option>
+                                <option value="ShiftLeft"
+                                        {{ calculator is defined and calculator.operator == 'ShiftLeft' ? 'selected' : '' }}>
+                                    ShiftLeft
+                                </option>
+                                <option value="ShiftRight"
+                                        {{ calculator is defined and calculator.operator == 'ShiftRight' ? 'selected' : '' }}>
+                                    ShiftRight
+                                </option>
+                                <option value="What is X% of Y"
+                                        {{ calculator is defined and calculator.operator == 'What is X% of Y' ? 'selected' : '' }}>
+                                    What is X% of Y
+                                </option>
+                                <option value="X is what % of Y"
+                                        {{ calculator is defined and calculator.operator == 'X is what % of Y' ? 'selected' : '' }}>
+                                    X is what % of Y
+                                </option>
+                                <option value="√X"
+                                        {{ calculator is defined and calculator.operator == '√X' ? 'selected' : '' }}>
+                                    √X
+                                </option>
+                                <option value="X!"
+                                        {{ calculator is defined and calculator.operator == 'X!' ? 'selected' : '' }}>
+                                    X!
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 ">
+                            <input type="number" step="any" class="form-control"
+                                   id="rightOperand"
+                                   placeholder="Y"
+                                   name="calculator[rightOperand]"
+                                   value="{{ calculator.rightOperand ?? '' }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 ">
+                            <p>
+                                <strong>
+                                    =
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    {% if form is defined %}
+                        {{ form_row(form._token) }}
+                    {% endif %}
+
+                    <div class="form-group">
+                        <div class="col-sm-4 ">
+                            <input type="number" step="any" class="form-control"
+                                   id="result"
+                                   placeholder="Result"
+                                   name="result"
+                                   value="{{ result ?? '' }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Calculate
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
