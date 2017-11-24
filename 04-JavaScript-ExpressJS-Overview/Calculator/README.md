@@ -5,14 +5,14 @@ Features
 ------------
 
 * Operations;
- * addition;
- * subtraction;
- * division;
- * multiplication;
- * modulo operation;
- * exponentiation;
- * X percent of Y;
- * X is what percent of Y;
- * square root of X;
- * X factorial;
- * Basic error handling;
+	* addition;
+	* subtraction;
+	* division;
+	* multiplication;
+	* modulo operation;
+	* exponentiation;
+	* X percent of Y;
+	* X is what percent of Y;
+	* square root of X;
+	* X factorial;
+* Basic error handling;
