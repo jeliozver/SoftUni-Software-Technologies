@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'profile' %}
+
+{% block main %}
+    <div class="container body-content span=8 offset=2">
+        <div class="well well-sm">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>User details:</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label text-left">Name:</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{ user.fullName }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Email:</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{ user.email }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Articles:</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">{{ articles|length }}</p>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle"
+                                type="button" id="menu1"
+                                data-toggle="dropdown">
+                            My Articles
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            {% for article in articles %}
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{{ path('article_view', {'id': article.id}) }}">
+                                    {{ article.title }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
