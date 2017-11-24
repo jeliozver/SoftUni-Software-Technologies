@@ -1,0 +1,14 @@
+Blog Basic Functionality - ExpressJS Web App
+========================
+
+Features
+------------
+
+* CRUD support for Articles;
+* Index page displays maximum of 6 articles, ordered by date;
+* Basic Roles system (Admin & User) in order to authenticate and authorize operations;
+	* Only Admin and the author can edit/delete given article;
+* Basic profile view for every user;
+	* Displays username, email and the count of articles posted;
+	* Dropdown button which lists the titles of all articles, posted by the current user, each entry has a link, leading to selected article details page;
+	* Only Admin can view all user's details. Users can only view their own profile;

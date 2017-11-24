@@ -1,10 +1,32 @@
-Symfony Demo Application
+Calculator - ExpressJS Web App
 ========================
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop Symfony applications following the recommended best practices.
+Features
+------------
 
-[![Build Status](https://travis-ci.org/symfony/symfony-demo.svg?branch=master)](https://travis-ci.org/symfony/symfony-demo)
+* Arithmetic Operators;
+ * Addition
+ * Subtraction
+ * Division
+ * Multiplication
+ * Modulo operation
+ * Exponentiation
+ 
+* Bitwise Operators;
+ * And
+ * Or
+ * Xor
+ * Not
+ * Shift left
+ * Shift right
+
+* Misk Operators;
+ * X percent of Y
+ * X is what percent of Y
+ * Square root of X
+ * X factorial
+ 
+* Basic error handling;
 
 Requirements
 ------------
