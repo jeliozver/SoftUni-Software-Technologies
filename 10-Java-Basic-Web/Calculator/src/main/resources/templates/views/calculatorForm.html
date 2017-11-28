@@ -1,0 +1,102 @@
+<form class="form-inline" th:action="@{/}" method="POST" xmlns:th="http://www.w3.org/1999/xhtml">
+    <fieldset>
+        <div class="form-group">
+            <div class="col-sm-1 ">
+                <input type="number" step="any" class="form-control" id="leftOperand"
+                       placeholder="X"
+                       name="leftOperand"
+                       th:value="${leftOperand}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-16 ">
+                <select class="form-control" name="operator">
+                    <option value="+" th:selected="${operator.equals('+')}">
+                        +
+                    </option>
+                    <option value="-" th:selected="${operator.equals('-')}">
+                        -
+                    </option>
+                    <option value="*" th:selected="${operator.equals('*')}">
+                        *
+                    </option>
+                    <option value="/" th:selected="${operator.equals('/')}">
+                        /
+                    </option>
+                    <option value="mod" th:selected="${operator.equals('mod')}">
+                        mod
+                    </option>
+                    <option value="pow" th:selected="${operator.equals('pow')}">
+                        pow
+                    </option>
+                    <option value="And" th:selected="${operator.equals('And')}">
+                        And
+                    </option>
+                    <option value="Or" th:selected="${operator.equals('Or')}">
+                        Or
+                    </option>
+                    <option value="Xor" th:selected="${operator.equals('Xor')}">
+                        Xor
+                    </option>
+                    <option value="Not" th:selected="${operator.equals('Not')}">
+                        Not
+                    </option>
+                    <option value="ShiftLeft" th:selected="${operator.equals('ShiftLeft')}">
+                        ShiftLeft
+                    </option>
+                    <option value="ShiftRight" th:selected="${operator.equals('ShiftRight')}">
+                        ShiftRight
+                    </option>
+                    <option value="What is X% of Y" th:selected="${operator.equals('What is X% of Y')}">
+                        What is X% of Y
+                    </option>
+                    <option value="X is what % of Y" th:selected="${operator.equals('X is what % of Y')}">
+                        X is what % of Y
+                    </option>
+                    <option value="√X" th:selected="${operator.equals('√X')}">
+                        √X
+                    </option>
+                    <option value="X!" th:selected="${operator.equals('X!')}">
+                        X!
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 ">
+                <input type="number" step="any" class="form-control" id="rightOperand"
+                       placeholder="Y"
+                       name="rightOperand"
+                       th:value="${rightOperand}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 ">
+                <p>
+                    <strong>
+                        =
+                    </strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 ">
+                <input type="text" class="form-control" id="result"
+                       placeholder="Result"
+                       name="result"
+                       th:value="${result}"
+                       readonly="readonly"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+                Calculate
+            </button>
+        </div>
+    </fieldset>
+</form>
