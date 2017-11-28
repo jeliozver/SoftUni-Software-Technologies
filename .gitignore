@@ -263,8 +263,8 @@ paket-files/
 # FAKE - F# Make
 .fake/
 
-# JetBrains Rider
-.idea/
+# JetBrains
+#.idea/
 *.sln.iml
 out/
 
