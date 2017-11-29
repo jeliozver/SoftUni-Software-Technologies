@@ -1,13 +1,11 @@
 package com.softuni.controller;
 
+import com.softuni.bindingModel.CalculatorBindingModel;
 import com.softuni.entity.Calculator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.text.DecimalFormat;
 
 @Controller
 public class HomeController {
@@ -19,31 +17,29 @@ public class HomeController {
 	}
 
 	@PostMapping("/")
-    public  String calculate(@RequestParam String leftOperand,
-                             @RequestParam String operator,
-                             @RequestParam String rightOperand,
-                             Model model) {
+    public  String calculate(CalculatorBindingModel validator, Model model) {
         double numberOne;
         double numberTwo;
 
 	    try {
-	        numberOne = Double.parseDouble(leftOperand);
+	        numberOne = Double.parseDouble(validator.getLeftOperand());
         } catch (NumberFormatException ex) {
 	        numberOne = 0;
         }
 
         try {
-	        numberTwo = Double.parseDouble(rightOperand);
+	        numberTwo = Double.parseDouble(validator.getRightOperand());
         } catch (NumberFormatException ex) {
 	        numberTwo = 0;
         }
 
-        Calculator calculator = new Calculator(numberOne, numberTwo, operator);
+        Calculator calculator = new Calculator(numberOne, numberTwo, validator.getOperator());
 
         double result = calculator.CalculateResult();
 
         String resultStr = String.valueOf(result);
-        if (operator.equals("/") && numberTwo == 0) resultStr = "Error!";
+        if (validator.getOperator().equals("/") && numberTwo == 0) resultStr = "Error!";
+        if (validator.getOperator().equals("mod") && numberTwo == 0) resultStr = "Error!";
 
         model.addAttribute("leftOperand", calculator.getLeftOperand());
         model.addAttribute("operator", calculator.getOperator());
