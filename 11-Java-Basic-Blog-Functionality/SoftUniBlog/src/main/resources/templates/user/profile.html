@@ -1,0 +1,45 @@
+<div class="container body-content span=8 offset=2">
+    <div class="well well-sm">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>User details:</legend>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label text-left">Name:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static" th:text="${user.email}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Email:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static" th:text="${user.fullName}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Articles:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static" th:text="${#lists.size(user.articles)}"></p>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle"
+                            type="button" id="menu1"
+                            data-toggle="dropdown">
+                        My Articles
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <th:block th:each="article : ${user.articles}">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1"
+                                   th:href="@{/article/{id}(id=${article.id})}"
+                                   th:text="${article.title}">
+                                </a>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
