@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNet.Identity
+@using SoftUniBlog.Models
+@model List<SoftUniBlog.Models.Article>
+
+@{
+    ViewBag.Title = "Profile Details";
+}
+
+<div class="container">
+    <div class="well">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Profile Details:</legend>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label text-left">Name:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @foreach (var article in Model)
+                            {
+                                @article.Author.FullName
+                                break;
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Email:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @User.Identity.GetUserName()
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Articles:</label>
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            @Model.Count
+                        </p>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle"
+                            type="button" id="menu1"
+                            data-toggle="dropdown">
+                        My Articles
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        @foreach (var article in Model)
+                        {
+                            <li>
+                                @Html.ActionLink(@article.Title, "Details", "Article", new { @id = article.Id }, null)
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

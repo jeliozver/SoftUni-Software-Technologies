@@ -1,0 +1,31 @@
+﻿@model SoftUniBlog.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<div class="container">
+    <div class="well">
+        <h2>@ViewBag.Title</h2>
+
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
+                </dd>
+                <dt>Profile Details:</dt>
+                <dd>[ @Html.ActionLink("Details", "ProfileDetails") ]</dd>
+            </dl>
+        </div>
+    </div>
+</div>
