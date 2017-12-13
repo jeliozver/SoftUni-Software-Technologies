@@ -264,7 +264,7 @@ paket-files/
 .fake/
 
 # JetBrains
-#.idea/
+.idea/
 *.sln.iml
 out/
 
