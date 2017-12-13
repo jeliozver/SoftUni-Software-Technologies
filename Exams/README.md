@@ -1,0 +1,1 @@
+Here you can find some of the previous exams or exam preparations for SoftUni's Software Technologies course
