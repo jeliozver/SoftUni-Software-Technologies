@@ -33,6 +33,16 @@ article .fa {
     text-decoration: none;
 }
 
+.fa-pencil-square {
+    position: absolute;
+    background: blue;
+    padding: 1px 5px 1px 6px;
+    color: #FFFFFF;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+}
+
 .home h2 {
     color: #000000;
     text-align: left;

@@ -58,6 +58,40 @@ public class TaskController {
         return "redirect:/";
     }
 
+    @GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable int id) {
+        Task task = taskRepository.findOne(id);
+
+        if (task == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("view", "task/edit");
+        model.addAttribute("task", task);
+
+        return "base-layout";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editProcess(TaskBindingModel taskBindingModel, @PathVariable int id) {
+        Task task = taskRepository.findOne(id);
+
+        if (task == null) {
+            return "redirect:/";
+        }
+
+        if (taskBindingModel.getTitle().equals("") || taskBindingModel.getComments().equals("")) {
+            return "redirect:/";
+        }
+
+        task.setComments(taskBindingModel.getComments());
+        task.setTitle(taskBindingModel.getTitle());
+
+        taskRepository.saveAndFlush(task);
+
+        return "redirect:/";
+    }
+
     @GetMapping("/delete/{id}")
     public String delete(Model model, @PathVariable int id) {
         Task task = taskRepository.findOne(id);

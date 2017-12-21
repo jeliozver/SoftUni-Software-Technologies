@@ -1,14 +1,14 @@
 <div id="create-wrapper">
     <section class="create">
         <article>
-            <form th:action="@{/create}" method="POST">
+            <form action="/edit/{{id}}" method="POST">
                 <div class="row">
                     <label for="task">Task:</label>
-                    <input type="text" id="task" name="title" />
+                    <input type="text" id="task" name="title" value="{{this.title}}">
                 </div>
                 <div class="row">
                     <label for="comments">Comments:</label>
-                    <input type="comments" id="comments" name="comments" />
+                    <textarea id="comments" name="comments">{{this.comments}}</textarea>
                 </div>
                 <button type="submit">Create</button>
             </form>

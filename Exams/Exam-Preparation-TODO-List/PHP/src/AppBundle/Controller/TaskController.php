@@ -57,6 +57,45 @@ class TaskController extends Controller
     }
 
     /**
+     * @Route("/edit/{id}", name="edit")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id, Request $request)
+    {
+        $task = $this
+            ->getDoctrine()
+            ->getRepository(Task::class)
+            ->find($id);
+
+        if ($task == null) {
+            return $this->redirectToRoute('index');
+        }
+
+        $form = $this->createForm(TaskType::class, $task);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($task->getTitle() == null || $task->getComments() == null) {
+                return $this->redirectToRoute('index');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->merge($task);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('task/edit.html.twig' ,
+            ['task' => $task, 'form' => $form->createView()]);
+    }
+
+    /**
      * @Route("/delete/{id}", name="delete")
      *
      * @param $id

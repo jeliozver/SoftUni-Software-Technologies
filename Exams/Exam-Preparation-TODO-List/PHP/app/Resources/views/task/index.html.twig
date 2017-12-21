@@ -5,6 +5,7 @@
     <h2>Tasks:</h2>
     {% for task in tasks %}
     <article>
+        <a href="{{ path('edit', {id: task.id}) }}" class="fa fa-pencil-square">E</a>
         <a href="{{ path('delete', {id: task.id}) }}" class="fa fa-window-close">X</a>
         <h3>{{ task.title }}</h3>
         <p>{{ task.comments }}</p>

@@ -2,6 +2,7 @@
     <h2>Tasks:</h2>
     {{#each tasks}}
     <article>
+        <a href="/edit/{{this.id}}" class="fa fa-pencil-square">E</a>
         <a href="/delete/{{this.id}}" class="fa fa-window-close">X</a>
         <h3>{{this.title}}</h3>
         <p>{{this.comments}}</p>

@@ -24,6 +24,35 @@ module.exports = {
         });
 	},
 
+    editGet: (req, res) => {
+        let id = req.params.id;
+
+        Task.findById(id).then(task => {
+            if (!task) {
+                res.redirect('/');
+                return;
+            }
+
+            res.render('task/edit', task)
+        });
+    },
+
+    editPost: (req, res) => {
+        let id = req.params.id;
+        let taskArgs = req.body;
+
+        if (!taskArgs.title || !taskArgs.comments) {
+            res.redirect('/');
+            return;
+        }
+
+        Task.update({_id: id}, {$set: {
+                title: taskArgs.title,
+                comments: taskArgs.comments,
+            }})
+            .then(res.redirect(`/`));
+    },
+
 	deleteGet: (req, res) => {
         let id = req.params.id;
 

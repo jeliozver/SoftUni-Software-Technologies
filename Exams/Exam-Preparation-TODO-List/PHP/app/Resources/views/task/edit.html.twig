@@ -4,19 +4,19 @@
     <div id="create-wrapper">
         <section class="create">
             <article>
-                <form action="{{ path('create') }}" method="POST">
+                <form action="{{ path('edit', {'id': task.id}) }}" method="POST">
                     <div class="row">
                         <label for="task">Task:</label>
-                        <input type="text" id="task" name="task[title]">
+                        <input type="text" id="task" name="task[title]" value="{{ task.title }}">
                     </div>
                     <div class="row">
                         <label for="comments">Comments:</label>
-                        <input id="comments" name="task[comments]">
+                        <input type="commnets" id="comments" name="task[comments]" value="{{ task.comments }}">
                     </div>
 
                     {{ form_row(form._token) }}
 
-                    <button type="submit">Create</button>
+                    <button type="submit">Edit</button>
                 </form>
             </article>
         </section>

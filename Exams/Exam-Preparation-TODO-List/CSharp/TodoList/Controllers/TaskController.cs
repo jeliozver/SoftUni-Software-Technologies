@@ -1,4 +1,6 @@
-﻿namespace TodoList.Controllers
+﻿using System.Data.Entity;
+
+namespace TodoList.Controllers
 {
     using Models;
     using System.Linq;
@@ -46,6 +48,40 @@
             {
                 db.Tasks.Add(task);
                 db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet]
+        [Route("edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            using (var db = new TodoListDbContext())
+            {
+                var task = db.Tasks.Find(id);
+
+                if (task == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View(task);
+            }
+        }
+
+        [HttpPost]
+        [Route("edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConfirm([Bind(Include = "Id,Title,Comments")] Task task)
+        {
+            using (var db = new TodoListDbContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(task).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
