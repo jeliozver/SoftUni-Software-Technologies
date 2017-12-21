@@ -63,6 +63,47 @@ class AnimeController extends Controller
 	}
 
     /**
+     * @Route("/edit/{id}", name="edit")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id, Request $request)
+    {
+        $anime = $this
+            ->getDoctrine()
+            ->getRepository(Anime::class)
+            ->find($id);
+
+        if ($anime == null) {
+            return $this->redirectToRoute('index');
+        }
+
+        $form = $this
+            ->createForm(AnimeType::class, $anime);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($anime->getName() == null || $anime->getRating() == null
+                || $anime->getWatched() == null || $anime->getDescription() == null) {
+                return $this->render('anime/edit.html.twig' ,
+                    ['anime' => $anime, 'form' => $form->createView()]);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->merge($anime);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('anime/edit.html.twig' ,
+            ['anime' => $anime, 'form' => $form->createView()]);
+    }
+
+    /**
      * @Route("/delete/{id}", name="delete")
      *
      * @param $id

@@ -24,11 +24,12 @@
                 <td>@product.Name</td>
                 <td>@product.Quantity</td>
                 <td>
-                    <input class="checkbox" type="checkbox" value="@product.Status" onclick="preventEvent(event)" name="@product.Name"/>
+                    <input class="checkbox" type="checkbox" value="@product.Status" onclick="preventEvent(event)" name="@product.Name" />
                     <label for="@product.Name"></label>
                 </td>
                 <td>
                     <button class="edit" onclick="location.href='/edit/@product.Id';return false;">Edit</button>
+                    <button class="delete" onclick="location.href='/delete/@product.Id';return false;">Delete</button>
                 </td>
             </tr>
             }

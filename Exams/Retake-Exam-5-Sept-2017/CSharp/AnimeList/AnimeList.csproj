@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -168,6 +169,7 @@
     </Content>
     <None Include="Views\Anime\Create.cshtml" />
     <None Include="Views\Anime\Delete.cshtml" />
+    <Content Include="Views\Anime\Edit.cshtml" />
     <None Include="Views\Anime\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

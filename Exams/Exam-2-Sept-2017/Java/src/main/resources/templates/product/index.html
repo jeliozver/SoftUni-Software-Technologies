@@ -21,6 +21,7 @@
                 </td>
                 <td>
                     <button class="edit" th:onclick="'location.href = \'' + @{/edit/{id}(id=${product.id})} + '\''">Edit</button>
+                    <button class="delete" th:onclick="'location.href = \'' + @{/delete/{id}(id=${product.id})} + '\''">Delete</button>
                 </td>
             </tr>
             </th:block>

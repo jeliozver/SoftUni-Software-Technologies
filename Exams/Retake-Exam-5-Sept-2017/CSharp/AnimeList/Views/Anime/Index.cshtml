@@ -4,7 +4,6 @@
     ViewBag.Title = "Anime List";
 }
 
-
 <h1>Anime List</h1>
 
 <section>
@@ -28,7 +27,8 @@
                     <label for="@anime.Name"></label>
                 </td>
                 <td>
-                    <button class="delete" onclick="location.href='/delete/@anime.Id';return false;">Delete</button>
+                    <button class="edit" onclick="location.href='/edit/@anime.Id';return false;">Edit</button>
+                    <button class="delete" onclick="location.href = '/delete/@anime.Id';return false;">Delete</button>
                 </td>
             </tr>
             }

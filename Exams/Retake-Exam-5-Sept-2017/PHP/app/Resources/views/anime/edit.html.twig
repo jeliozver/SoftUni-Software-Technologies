@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <h1>Edit Anime</h1>
+    <section>
+        <form onsubmit="checkValue()" method="POST">
+            <div>
+                <label for="rating">Rating</label>
+                <input type="text" id="rating" value="{{ anime.rating }}" name="anime[rating]" />
+                <label for="name">Name</label>
+                <input type="text" id="name" value="{{ anime.name }}" name="anime[name]" />
+                <label for="description">Description</label>
+                <input type="text" id="description" value="{{ anime.description }}" name="anime[description]" />
+                <label for="watched">Watched</label>
+                <input type="checkbox" id="watched" value="{{ anime.watched }}" name="anime[watched]" onclick="switchValue()" />
+                <label for="watched" id="watched-label"></label>
+
+                {{ form_row(form._token) }}
+
+                <button type="submit" class="accept">Edit</button>
+                <button type="button" class="cancel" onclick="location.href='/'">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function switchValue() {
+            document.getElementById("watched").value =
+                document.getElementById("watched").value === "watched" ? "not watched" : "watched";
+        }
+
+        function checkValue() {
+            document.getElementById("watched").checked = true;
+        }
+
+        (function checkBox() {
+            let checkbox = document.getElementById("watched");
+            checkbox.checked = checkbox.value !== "not watched";
+        })();
+    </script>
+{% endblock %}

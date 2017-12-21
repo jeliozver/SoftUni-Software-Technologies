@@ -59,5 +59,32 @@ module.exports = {
                 quantity: productArgs.quantity,
                 status: productArgs.status,
             }}).then(res.redirect(`/`));
-	}
+	},
+
+    deleteGet: (req, res) => {
+	    let id = req.params.id;
+
+        Product.findById(id).then(product => {
+            if (!product) {
+                res.redirect('/');
+                return;
+            }
+
+            res.render('product/delete', product)
+        });
+    },
+
+    deletePost: (req, res) => {
+        let id = req.params.id;
+
+        Product.findById(id).then(product => {
+            if (!product) {
+                res.redirect('/');
+                return;
+            }
+
+            Product.findByIdAndRemove(id)
+                .then(res.redirect('/'));
+        });
+    }
 };

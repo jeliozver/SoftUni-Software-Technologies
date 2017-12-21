@@ -72,6 +72,42 @@ public class AnimeController {
         return "redirect:/";
 	}
 
+	@GetMapping("/edit/{id}")
+    public String edit(Model model, @PathVariable int id) {
+	    Anime anime = animeRepository.findOne(id);
+
+	    if (anime == null) {
+	        return "redirect:/";
+        }
+
+        model.addAttribute("view", "anime/edit");
+        model.addAttribute("anime", anime);
+
+        return "base-layout";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editProcess(@PathVariable int id, AnimeBindingModel animeBindingModel) {
+        Anime anime = animeRepository.findOne(id);
+
+        if (anime == null) {
+            return "redirect:/";
+        }
+
+        if (isFormInvalid(animeBindingModel)) {
+            return "redirect:/";
+        }
+
+        anime.setRating(Integer.parseInt(animeBindingModel.getRating()));
+        anime.setName(animeBindingModel.getName());
+        anime.setDescription(animeBindingModel.getDescription());
+        anime.setWatched(animeBindingModel.getWatched());
+
+        animeRepository.saveAndFlush(anime);
+
+        return "redirect:/";
+    }
+
 	@GetMapping("/delete/{id}")
 	public String delete(Model model, @PathVariable int id) {
         Anime anime = animeRepository.findOne(id);

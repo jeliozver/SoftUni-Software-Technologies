@@ -89,7 +89,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/edit/{id}")
-	public String editProcess(Model model, @PathVariable int id, ProductBindingModel productBindingModel) {
+	public String editProcess(@PathVariable int id, ProductBindingModel productBindingModel) {
 		if (!this.productRepository.exists(id)) {
 			return "redirect:/";
 		}
@@ -110,6 +110,34 @@ public class ProductController {
 
 		return "redirect:/";
 	}
+
+	@GetMapping("/delete/{id}")
+    public String delete(Model model, @PathVariable int id) {
+	    Product product = productRepository.findOne(id);
+
+	    if (product == null) {
+	        return "redirect:/";
+        }
+
+        model.addAttribute("view", "product/delete");
+        model.addAttribute("product", product);
+
+        return "base-layout";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProcess(@PathVariable int id) {
+        Product product = productRepository.findOne(id);
+
+        if (product == null) {
+            return "redirect:/";
+        }
+
+        productRepository.delete(product);
+        productRepository.flush();
+
+        return "redirect:/";
+    }
 
 	private boolean isFormInvalid (ProductBindingModel productBindingModel){
 		try {

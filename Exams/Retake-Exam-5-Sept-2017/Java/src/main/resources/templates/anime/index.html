@@ -20,6 +20,7 @@
                     <label th:for="${anime.name}"></label>
                 </td>
                 <td>
+                    <button class="edit" th:onclick="'location.href = \'' + @{/edit/{id}(id=${anime.id})} + '\''">Edit</button>
                     <button class="delete" th:onclick="'location.href = \'' + @{/delete/{id}(id=${anime.id})} + '\''">Delete</button>
                 </td>
             </tr>

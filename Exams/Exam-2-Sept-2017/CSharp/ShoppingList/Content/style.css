@@ -83,13 +83,12 @@ th {
 }
 
 .delete {
-    background:#b6fbff;
+    background: #b6fbff;
     color: #000000;
 }
 .edit {
     background: #00004d;
     color: #FFFFFF;
-    font-size: 1em;
 }
 
 tr:nth-child(odd) .edit:hover {

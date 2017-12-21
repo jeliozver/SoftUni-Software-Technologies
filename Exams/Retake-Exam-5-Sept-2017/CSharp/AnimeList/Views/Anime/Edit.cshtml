@@ -1,32 +1,33 @@
-@model AnimeList.Models.Anime
+﻿@model AnimeList.Models.Anime
 
 @{
-    ViewBag.Title = "Add New Anime";
+    ViewBag.Title = "Edit Anime";
 }
 
-<h1>Add New Anime</h1>
+<h1>Edit Anime</h1>
 
 <section>
-    @using (Html.BeginForm("Create", "Anime", FormMethod.Post, new { onsubmit = "checkValue()" }))
+    @using (Html.BeginForm("Edit", "Anime", FormMethod.Post, new { onsubmit = "checkValue()" }))
     {
         @Html.AntiForgeryToken()
 
         <div>
             <label for="rating">Rating</label>
-            <input type="text" id="rating" name="rating" value="0">
+            <input type="text" id="rating" value="@Model.Rating" name="rating">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" value="@Model.Name" name="name">
             <label for="description">Description</label>
-            <input type="text" id="description" name="description" value="...">
+            <input type="text" id="description" value="@Model.Description" name="description">
             <label for="watched">Watched</label>
-            <input type="checkbox" id="watched" value="not watched" name="watched" onclick="switchValue()">
+            <input type="checkbox" id="watched" value="@Model.Watched" name="watched" onclick="switchValue()">
             <label for="watched" id="watched-label"></label>
-            <button type="submit" class="accept">Create</button>
+            <button type="submit" class="accept">Edit</button>
             <button type="button" class="cancel" onclick="location.href='/';return false;">Cancel</button>
         </div>
     }
 </section>
 
+<
 <script>
     function switchValue() {
         document.getElementById("watched").value =

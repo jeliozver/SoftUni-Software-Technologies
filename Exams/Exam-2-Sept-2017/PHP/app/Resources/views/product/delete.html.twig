@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+    <h1>Delete Product</h1>
+    <section>
+        <form onsubmit="checkValue()" method="POST">
+            <div>
+                <label for="priority">Priority</label>
+                <input type="text" id="priority" value="{{ product.priority }}" name="product[priority]" disabled="disabled" />
+                <label for="name">Name</label>
+                <input type="text" id="name" value="{{ product.name }}" name="product[name]" disabled="disabled" />
+                <label for="quantity">Quantity</label>
+                <input type="text" id="quantity" value="{{ product.quantity }}" name="product[quantity]" disabled="disabled" />
+                <label for="status">Status</label>
+                <input type="checkbox" id="status" value="{{ product.status }}" name="product[status]" disabled="disabled" />
+                <label for="status" id="status-label"></label>
+
+                {{ form_row(form._token) }}
+
+                <button type="submit" class="accept">Delete</button>
+                <button type="button" class="cancel" onclick="location.href='/'">Cancel</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        function checkValue() {
+            document.getElementById("status").checked = true;
+        }
+
+        (function checkBox() {
+            let checkbox = document.getElementById("status");
+            checkbox.checked = checkbox.value !== "not bought";
+        })();
+    </script>
+{% endblock %}

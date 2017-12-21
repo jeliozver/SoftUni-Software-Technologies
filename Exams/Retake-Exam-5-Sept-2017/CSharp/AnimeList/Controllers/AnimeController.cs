@@ -1,8 +1,9 @@
 ﻿namespace AnimeList.Controllers
 {
+    using Models;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Mvc;
-    using Models;
 
     [ValidateInput(false)]
     public class AnimeController : Controller
@@ -35,6 +36,35 @@
             if (ModelState.IsValid)
             {
                 db.Animes.Add(anime);
+                db.SaveChanges();
+            }
+
+            return Redirect("/");
+        }
+
+        [HttpGet]
+        [Route("edit/{id}")]
+        public ActionResult Edit(int? id)
+        {
+            var anime = db.Animes.Find(id);
+
+            if (anime == null)
+            {
+                return Redirect("/");
+            }
+
+            return View(anime);
+        }
+
+        [HttpPost]
+        [Route("edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConfirm(
+            [Bind(Include = "Id,Rating,Name,Description,Watched")] Anime anime)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(anime).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

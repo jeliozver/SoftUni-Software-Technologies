@@ -12,7 +12,7 @@
             <label for="description">Description</label>
             <input type="text" id="description" value="{{ anime.description }}" name="anime[description]" disabled/>
             <label for="watched">Watched</label>
-            <input type="checkbox" id="watched" value="{{ anime.watched }}" name="anime[watched]" onclick="switchValue()" disabled/>
+            <input type="checkbox" id="watched" value="{{ anime.watched }}" name="anime[watched]" disabled/>
             <label for="watched" id="watched-label"></label>
 
             {{ form_row(form._token) }}
@@ -23,18 +23,18 @@
     </form>
 </section>
 
-<script>
-    function checkValue() {
-        document.getElementById("watched").checked = true;
-        document.getElementById("rating").disabled = false;
-        document.getElementById("name").disabled = false;
-        document.getElementById("description").disabled = false;
-        document.getElementById("status").disabled = false;
-    }
+    <script>
+        function checkValue() {
+            document.getElementById("watched").checked = true;
+            document.getElementById("rating").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("description").disabled = false;
+            document.getElementById("status").disabled = false;
+        }
 
-    (function checkBox() {
-        let checkbox = document.getElementById("watched");
-        checkbox.checked = checkbox.value !== "not watched";
-    })();
-</script>
+        (function checkBox() {
+            let checkbox = document.getElementById("watched");
+            checkbox.checked = checkbox.value !== "not watched";
+        })();
+    </script>
 {% endblock %}

@@ -23,6 +23,7 @@
                     <label for="{{ anime.name }}"></label>
                 </td>
                 <td>
+                    <button class="edit" onclick="location.href='/edit/{{ anime.id }}'">Edit</button>
                     <button class="delete" onclick="location.href='/delete/{{ anime.id }}'">Delete</button>
                 </td>
             </tr>

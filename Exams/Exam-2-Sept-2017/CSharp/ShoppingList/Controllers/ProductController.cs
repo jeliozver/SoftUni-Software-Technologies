@@ -70,5 +70,37 @@
 
             return Redirect("/");
         }
+
+        [HttpGet]
+        [Route("delete/{id}")]
+        public ActionResult Delete(int? id)
+        {
+            var product = db.Products.Find(id);
+
+            if (product == null)
+            {
+                return Redirect("/");
+            }
+
+            return View(product);
+        }
+
+        [HttpPost]
+        [Route("delete/{id}")]
+		[ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirm(int? id)
+        {
+            var product = db.Products.Find(id);
+
+            if (product == null)
+            {
+                return Redirect("/");
+            }
+
+            db.Products.Remove(product);
+            db.SaveChanges();
+
+            return Redirect("/");
+        }
     }
 }

@@ -8,4 +8,7 @@ module.exports = (app) => {
 
     app.get('/delete/:id', animeController.deleteGet);
     app.post('/delete/:id', animeController.deletePost);
+
+    app.get('/edit/:id', animeController.editGet);
+    app.post('/edit/:id', animeController.editPost);
 };

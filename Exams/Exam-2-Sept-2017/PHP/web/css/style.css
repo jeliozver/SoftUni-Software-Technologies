@@ -89,7 +89,6 @@ th {
 .edit {
     background: #00004d;
     color: #FFFFFF;
-    font-size: 1em;
 }
 
 tr:nth-child(odd) .edit:hover {

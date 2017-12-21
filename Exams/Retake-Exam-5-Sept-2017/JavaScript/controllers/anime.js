@@ -29,6 +29,43 @@ module.exports = {
             .then(res.redirect('/'));
 	},
 
+    editGet: (req, res) => {
+        let id = req.params.id;
+
+        Anime.findById(id).then(anime => {
+            if (!anime) {
+                res.redirect('/');
+                return;
+            }
+
+            res.render('anime/edit', anime);
+        });
+    },
+
+    editPost: (req, res) => {
+        let id = req.params.id;
+        let animeArgs = req.body;
+
+        let ratingCheck = parseInt(animeArgs.rating);
+
+        if (!animeArgs.name
+            || !animeArgs.description
+            || !animeArgs.watched
+            || isNaN(ratingCheck) )
+        {
+            res.redirect('/');
+            return;
+        }
+
+        Anime.update({_id: id}, {$set: {
+                name: animeArgs.name,
+                description: animeArgs.description,
+                watched: animeArgs.watched,
+                rating: animeArgs.rating,}})
+            .then(res.redirect(`/`));
+
+    },
+
 	deleteGet: (req, res) => {
         let id = req.params.id;
 

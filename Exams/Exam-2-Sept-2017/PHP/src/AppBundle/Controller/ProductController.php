@@ -22,7 +22,7 @@ class ProductController extends Controller
         return $this
             ->render('product/index.html.twig',
                 ['products' => $products]);
-	}
+    }
 
     /**
      * @param Request $request
@@ -76,7 +76,7 @@ class ProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             if ($product->getName() == null || $product->getStatus() == null
                 || $product->getPriority() == null || $product->getQuantity() == null) {
-                return $this->render('product/edit.html.twig' ,
+                return $this->render('product/edit.html.twig',
                     ['product' => $product, 'form' => $form->createView()]);
             }
 
@@ -87,7 +87,40 @@ class ProductController extends Controller
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('product/edit.html.twig' ,
+        return $this->render('product/edit.html.twig',
+            ['product' => $product, 'form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete($id, Request $request)
+    {
+        $product = $this
+            ->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+
+        if ($product == null) {
+            return $this->redirectToRoute('index');
+        }
+
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($product);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('product/delete.html.twig',
             ['product' => $product, 'form' => $form->createView()]);
     }
 }
