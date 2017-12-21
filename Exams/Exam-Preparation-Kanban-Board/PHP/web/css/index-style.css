@@ -118,5 +118,9 @@ a.button:hover {
 }
 
 .edit:before {
-    content: "🖉";
+      content: "🖉";
+}
+
+.delete:before {
+    content: "❌";
 }

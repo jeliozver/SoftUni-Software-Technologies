@@ -20,6 +20,7 @@
 			<li>
 				@task.Title
 				@Html.ActionLink(" ", "Edit", "Task", new { id = task.Id}, new { @class = "icon edit" })
+			    @Html.ActionLink(" ", "Delete", "Task", new { id = task.Id}, new { @class = "icon delete" })
 			</li>
 		}
 	</ul>
@@ -29,6 +30,7 @@
 			<li>
 				@task.Title
 				@Html.ActionLink(" ", "Edit", "Task", new { id = task.Id }, new { @class = "icon edit" })
+			    @Html.ActionLink(" ", "Delete", "Task", new { id = task.Id }, new { @class = "icon delete" })
 			</li>
 		}
 	</ul>
@@ -38,6 +40,7 @@
 			<li>
 				@task.Title
 				@Html.ActionLink(" ", "Edit", "Task", new { id = task.Id }, new { @class = "icon edit" })
+			    @Html.ActionLink(" ", "Delete", "Task", new { id = task.Id }, new { @class = "icon delete" })
 			</li>
 		}
 	</ul>

@@ -110,4 +110,43 @@ class TaskController extends Controller
         return $this->render('task/edit.html.twig' ,
             ['task' => $task, 'form' => $form->createView()]);
     }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function delete($id, Request $request)
+    {
+        $task = $this
+            ->getDoctrine()
+            ->getRepository(Task::class)
+            ->find($id);
+
+        if ($task == null) {
+            return $this->redirectToRoute('index');
+        }
+
+        $form = $this->createForm(TaskType::class, $task);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $em = $this
+                ->getDoctrine()
+                ->getManager();
+
+            $em->remove($task);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('task/delete.html.twig' ,
+            ['task' => $task, 'form' => $form->createView()]);
+    }
 }

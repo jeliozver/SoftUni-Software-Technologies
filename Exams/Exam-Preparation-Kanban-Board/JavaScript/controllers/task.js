@@ -53,5 +53,32 @@ module.exports = {
                 status: taskArgs.status,
             }})
             .then(res.redirect(`/`));
-	}
+	},
+
+	deleteGet: (req, res) => {
+        let id = req.params.id;
+
+        Task.findById(id).then(task => {
+            if (!task) {
+                res.redirect('/');
+                return;
+            }
+
+            res.render('task/delete', task)
+        });
+    },
+
+    deletePost: (req, res) => {
+        let id = req.params.id;
+
+        Task.findById(id).then(task => {
+            if (!task) {
+                res.redirect('/');
+                return;
+            }
+
+            Task.findByIdAndRemove(id)
+                .then(res.redirect(`/`));
+        });
+    }
 };

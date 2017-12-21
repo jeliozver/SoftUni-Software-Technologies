@@ -98,6 +98,34 @@ public class TaskController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable int id, Model model) {
+		Task task = taskRepository.findOne(id);
+
+		if (task == null) {
+		    return "redirect:/";
+        }
+
+        model.addAttribute("view", "task/delete");
+		model.addAttribute("task", task);
+
+		return "base-layout";
+	}
+
+	@PostMapping("/delete/{id}")
+    public String deleteProcess(@PathVariable int id) {
+	    Task task = taskRepository.findOne(id);
+
+	    if (task == null) {
+	        return "redirect:/";
+        }
+
+        taskRepository.delete(task);
+	    taskRepository.flush();
+
+	    return "redirect:/";
+    }
+
 	private boolean isFormInvalid (TaskBindingModel taskBindingModel){
 
 			return taskBindingModel.getTitle().equals("")

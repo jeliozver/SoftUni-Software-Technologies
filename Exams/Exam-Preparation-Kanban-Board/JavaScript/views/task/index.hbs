@@ -12,6 +12,7 @@
 		{{#each openTasks}}
 			<li>{{title}}
 				<a class="icon edit" href="/edit/{{id}}"></a>
+                <a class="icon delete" href="/delete/{{id}}"></a>
 			</li>
 		{{/each}}
 	</ul>
@@ -19,6 +20,7 @@
 		{{#each inProgressTasks}}
 			<li>{{title}}
 				<a class="icon edit" href="/edit/{{id}}"></a>
+                <a class="icon delete" href="/delete/{{id}}"></a>
 			</li>
 		{{/each}}
 	</ul>
@@ -26,6 +28,7 @@
 		{{#each finishedTasks}}
 			<li>{{title}}
 				<a class="icon edit" href="/edit/{{id}}"></a>
+                <a class="icon delete" href="/delete/{{id}}"></a>
 			</li>
 		{{/each}}
 	</ul>

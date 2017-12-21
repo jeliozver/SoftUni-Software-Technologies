@@ -15,6 +15,7 @@
             {% for task in openTasks %}
                 <li>{{ task.title }}
                     <a href="{{ path('edit', {id: task.id}) }}" class="icon edit"></a>
+                    <a href="{{ path('delete', {id: task.id}) }}" class="icon delete"></a>
                 </li>
             {% endfor %}
         </ul>
@@ -22,6 +23,7 @@
             {% for task in inProgressTasks %}
                 <li>{{ task.title }}
                     <a href="{{ path('edit', {id: task.id}) }}" class="icon edit"></a>
+                    <a href="{{ path('delete', {id: task.id}) }}" class="icon delete"></a>
                 </li>
             {% endfor %}
         </ul>
@@ -29,6 +31,7 @@
             {% for task in finishedTasks %}
                 <li>{{ task.title }}
                     <a href="{{ path('edit', {id: task.id}) }}" class="icon edit"></a>
+                    <a href="{{ path('delete', {id: task.id}) }}" class="icon delete"></a>
                 </li>
             {% endfor %}
         </ul>

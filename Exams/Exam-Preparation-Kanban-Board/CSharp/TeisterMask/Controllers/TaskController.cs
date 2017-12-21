@@ -69,5 +69,38 @@
 
             return Redirect("/");
         }
+
+
+        [HttpGet]
+        [Route("delete/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var task = db.Tasks.Find(id);
+
+            if (task == null)
+            {
+                return Redirect("/");
+            }
+
+            return View(task);
+        }
+
+        [HttpPost]
+        [Route("delete/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirm(int id)
+        {
+            var task = db.Tasks.Find(id);
+
+            if (task == null)
+            {
+                return Redirect("/");
+            }
+
+            db.Tasks.Remove(task);
+            db.SaveChanges();
+
+            return Redirect("/");
+        }
     }
 }

@@ -125,6 +125,10 @@ a.button:hover {
 	content: "🖉";
 }
 
+.delete:before {
+	content: "❌";
+}
+
 .error-msg {
 	background-color: orangered;
 	color: white;

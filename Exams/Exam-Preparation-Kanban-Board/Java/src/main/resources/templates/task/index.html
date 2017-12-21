@@ -13,6 +13,7 @@
             <li th:inline="text">
                 [[${task.title}]]
                 <a class="icon edit" th:href="@{/edit/{id}(id=${task.id})}"></a>
+                <a class="icon delete" th:href="@{/delete/{id}(id=${task.id})}"></a>
             </li>
         </th:block>
     </ul>
@@ -21,6 +22,7 @@
             <li th:inline="text">
                 [[${task.title}]]
                 <a class="icon edit" th:href="@{/edit/{id}(id=${task.id})}"></a>
+                <a class="icon delete" th:href="@{/delete/{id}(id=${task.id})}"></a>
             </li>
         </th:block>
     </ul>
@@ -29,6 +31,7 @@
             <li th:inline="text">
                 [[${task.title}]]
                 <a class="icon edit" th:href="@{/edit/{id}(id=${task.id})}"></a>
+                <a class="icon delete" th:href="@{/delete/{id}(id=${task.id})}"></a>
             </li>
         </th:block>
     </ul>

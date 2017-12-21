@@ -120,3 +120,7 @@ a.button:hover {
 .edit:before {
 	content: "🖉";
 }
+
+.delete:before {
+    content: "❌";
+}

@@ -8,4 +8,7 @@ module.exports = (app) => {
 
 	app.get('/edit/:id', taskController.editGet);
 	app.post('/edit/:id', taskController.editPost);
+
+    app.get('/delete/:id', taskController.deleteGet);
+    app.post('/delete/:id', taskController.deletePost);
 };
