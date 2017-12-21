@@ -2,7 +2,7 @@ const Report = require('../models/Report');
 
 module.exports = {
     index: (req, res) => {
-        Report.find().sort([['priority', 1]]).then(reports => {
+        Report.find().then(reports => {
             res.render('report/index', {'reports': reports});
         });
     },
