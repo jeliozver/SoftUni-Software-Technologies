@@ -8,6 +8,9 @@ module.exports = (app) => {
 
 	app.get('/details/:id', reportController.detailsGet);
 
+    app.get('/edit/:id', reportController.editGet);
+    app.post('/edit/:id', reportController.editPost);
+
 	app.get('/delete/:id', reportController.deleteGet);
 	app.post('/delete/:id', reportController.deletePost);
 };

@@ -1,6 +1,7 @@
 ﻿namespace LogNoziroh.Controllers
 {
     using Models;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -47,6 +48,34 @@
             if (ModelState.IsValid)
             {
                 db.Reports.Add(report);
+                db.SaveChanges();
+            }
+
+            return Redirect("/");
+        }
+
+        [HttpGet]
+        [Route("edit/{id}")]
+        public ActionResult Edit(int id)
+        {
+            var report = db.Reports.Find(id);
+
+            if (report == null)
+            {
+                return Redirect("/");
+            }
+
+            return View(report);
+        }
+
+        [HttpPost]
+        [Route("edit/{id}")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditConfirm([Bind(Include = "Id,Status,Message,Origin")] Report report)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(report).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

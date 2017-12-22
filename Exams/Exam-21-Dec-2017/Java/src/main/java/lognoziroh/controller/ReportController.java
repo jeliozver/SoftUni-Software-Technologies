@@ -77,6 +77,42 @@ public class ReportController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/edit/{id}")
+	public String edit(Model model, @PathVariable int id) {
+		Report report = reportRepository.findOne(id);
+
+		if (report == null) {
+			return "redirect:/";
+		}
+
+		model.addAttribute("view", "report/edit");
+		model.addAttribute("report", report);
+
+		return "base-layout";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String editProcess(@PathVariable int id, ReportBindingModel reportBindingModel) {
+        if (!this.reportRepository.exists(id)) {
+            return "redirect:/";
+        }
+
+        if (isFormInvalid(reportBindingModel))
+        {
+            return "redirect:/";
+        }
+
+        Report report = this.reportRepository.findOne(id);
+
+        report.setStatus(reportBindingModel.getStatus());
+        report.setMessage(reportBindingModel.getMessage());
+        report.setOrigin(reportBindingModel.getOrigin());
+
+        reportRepository.saveAndFlush(report);
+
+        return "redirect:/";
+	}
+
 	@GetMapping("/delete/{id}")
 	public String delete(Model model, @PathVariable int id) {
 		Report report = reportRepository.findOne(id);

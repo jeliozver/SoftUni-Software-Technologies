@@ -21,8 +21,9 @@
                         @(report.Message.Length > 50 ? report.Message.Substring(0, 50) + "..." : report.Message)
                     </div>
                     <div class="report-actions">
-                        @Html.ActionLink("Details", "Details", "Report", new { id = report.Id }, new { @class = "details-button" })
+                        @Html.ActionLink("Edit", "Edit", "Report", new { id = report.Id }, new { @class = "details-button" })
                         @Html.ActionLink("Delete", "Delete", "Report", new { id = report.Id }, new { @class = "delete-button" })
+                        @Html.ActionLink("Details", "Details", "Report", new { id = report.Id }, new { @class = "details-button" })
                     </div>
                 </div>
             }

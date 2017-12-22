@@ -37,6 +37,36 @@ module.exports = {
         });
     },
 
+    editGet: (req, res) => {
+        let id = req.params.id;
+
+        Report.findById(id).then(report => {
+            if (!report) {
+                res.redirect('/');
+                return;
+            }
+
+            res.render('report/edit', report)
+        });
+    },
+
+    editPost: (req, res) => {
+        let id = req.params.id;
+        let reportArgs = req.body;
+
+        if (!reportArgs.status || !reportArgs.message
+            || !reportArgs.origin) {
+            res.redirect('/');
+            return;
+        }
+
+        Report.update({_id: id}, {$set: {
+                status: reportArgs.status,
+                message: reportArgs.message,
+                origin: reportArgs.origin,
+            }}).then(res.redirect(`/`));
+    },
+
     deleteGet: (req, res) => {
         let id = req.params.id;
 

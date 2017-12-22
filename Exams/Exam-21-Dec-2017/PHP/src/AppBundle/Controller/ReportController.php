@@ -84,6 +84,48 @@ class ReportController extends Controller
     }
 
     /**
+     * @Route("/edit/{id}", name="edit")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function edit($id, Request $request)
+    {
+        $report = $this
+            ->getDoctrine()
+            ->getRepository(Report::class)
+            ->find($id);
+
+        if ($report == null) {
+            return $this->redirectToRoute('index');
+        }
+
+        $form = $this
+            ->createForm(ReportType::class, $report);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($report->getStatus() == null
+                || $report->getMessage() == null
+                || $report->getOrigin() == null) {
+                return $this->redirectToRoute('index');
+            }
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->merge($report);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('report/edit.html.twig',
+            ['report' => $report, 'form' => $form->createView()]);
+    }
+
+    /**
      * @Route("/delete/{id}", name="delete")
      *
      * @param $id
