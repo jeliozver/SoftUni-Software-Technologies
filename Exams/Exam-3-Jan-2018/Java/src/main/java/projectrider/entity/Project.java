@@ -3,8 +3,9 @@ package projectrider.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "projets")
+@Table(name = "projects")
 public class Project {
+
     private Integer id;
 
     private String title;

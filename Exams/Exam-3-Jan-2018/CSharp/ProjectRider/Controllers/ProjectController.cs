@@ -87,7 +87,7 @@
         [HttpPost]
         [Route("delete/{id}")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirm(int id, Project reportModel)
+        public ActionResult DeleteConfirm(int id)
         {
             var project = db.Projects.Find(id);
 

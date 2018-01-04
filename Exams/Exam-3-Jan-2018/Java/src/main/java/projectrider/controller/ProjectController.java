@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import projectrider.bindingModel.ProjectBindingModel;
 import projectrider.repository.ProjectRepository;
-
 import java.util.List;
 
 @Controller
@@ -78,7 +77,7 @@ public class ProjectController {
 	}
 
 	@PostMapping("/edit/{id}")
-	public String editProcess(@PathVariable int id, Model model, ProjectBindingModel projectBindingModel) {
+	public String editProcess(@PathVariable int id, ProjectBindingModel projectBindingModel) {
         if (!this.projectRepository.exists(id)) {
             return "redirect:/";
         }
@@ -114,7 +113,7 @@ public class ProjectController {
 	}
 
 	@PostMapping("/delete/{id}")
-	public String deleteProcess(@PathVariable int id, ProjectBindingModel projectBindingModel) {
+	public String deleteProcess(@PathVariable int id) {
         Project project = projectRepository.findOne(id);
 
         if (project == null) {

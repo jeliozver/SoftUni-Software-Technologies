@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace ProjectRider
+﻿namespace ProjectRider
 {
-	public class RouteConfig
-	{
-		public static void RegisterRoutes(RouteCollection routes)
-		{
-			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+    using System.Web.Mvc;
+    using System.Web.Routing;
 
-			routes.MapMvcAttributeRoutes();
-		}
-	}
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapMvcAttributeRoutes();
+        }
+    }
 }

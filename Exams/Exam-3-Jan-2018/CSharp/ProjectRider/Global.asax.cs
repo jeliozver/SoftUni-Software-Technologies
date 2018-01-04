@@ -1,23 +1,22 @@
-﻿using System.Data.Entity;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using ProjectRider.Models;
-
-namespace ProjectRider
+﻿namespace ProjectRider
 {
+    using Models;
+    using System.Data.Entity;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
-	        var initializer =
-		        new CreateDatabaseIfNotExists<ProjectRiderDbContext>();
+            var initializer =
+                new CreateDatabaseIfNotExists<ProjectRiderDbContext>();
 
+            Database.SetInitializer(initializer);
 
-	        Database.SetInitializer(initializer);
-
-			AreaRegistration.RegisterAllAreas();
+            AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

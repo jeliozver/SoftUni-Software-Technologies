@@ -16,7 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getRepository(Project::class);
+        $em = $this->getDoctrine()
+            ->getRepository(Project::class);
 
         $projects = $em->findAll();
 
@@ -82,12 +83,14 @@ class ProjectController extends Controller
                 return $this->render('project/edit.html.twig',
                     ['project' => $project, 'form' => $form->createView()]);
             }
+
             $em = $this->getDoctrine()->getManager();
             $em->merge($project);
             $em->flush();
 
             return $this->redirectToRoute('index');
         }
+
         return $this->render('project/edit.html.twig',
             ['project' => $project, 'form' => $form->createView()]);
     }

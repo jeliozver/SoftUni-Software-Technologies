@@ -1,6 +1,7 @@
 package projectrider.bindingModel;
 
 public class ProjectBindingModel {
+
     private String title;
 
     private String description;

@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ProjectRider.Models
+﻿namespace ProjectRider.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Project
     {
         [Key]
