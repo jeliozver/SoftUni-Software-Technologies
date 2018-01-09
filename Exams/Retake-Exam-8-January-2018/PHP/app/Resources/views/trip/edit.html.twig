@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+<div class="wrapper">
+    <form class="trip-create" method="post">
+        <div class="create-header">
+            Edit Trip
+        </div>
+        <div class="create-origin">
+            <div class="create-origin-label">Origin</div>
+            <input class="create-origin-content" name="trip[origin]" value="{{ trip.origin }}" />
+        </div>
+        <div class="create-destination">
+            <div class="create-destination-label">Destination</div>
+            <input class="create-destination-content" name="trip[destination]" value="{{ trip.destination }}" />
+        </div>
+        <div class="create-business">
+            <div class="create-business-label">Business Class Price</div>
+            <input type="number" min="0" class="create-business-content" name="trip[business]" value="{{ trip.business }}" />
+        </div>
+        <div class="create-economy">
+            <div class="create-economy-label">Economy Class Price</div>
+            <input type="number" min="0" class="create-economy-content" name="trip[economy]" value="{{ trip.economy }}" />
+        </div>
+        <div class="create-button-holder">
+            <button type="submit" class="submit-button">Edit Trip</button>
+            <a type="button" href="/" class="back-button">Back</a>
+        </div>
+
+        {{ form_row(form._token) }}
+    </form>
+</div>
+{% endblock %}
+

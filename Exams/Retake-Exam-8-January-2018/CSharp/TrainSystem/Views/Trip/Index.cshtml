@@ -1,0 +1,34 @@
+﻿@model List<TrainSystem.Models.Trip>
+
+@{
+	ViewBag.Title = "Index";
+}
+<div class="wrapper">
+    <div class="button-holder">
+        <a type="button" href="/create" class="log-button">Create New Trip</a>
+    </div>
+    <div class="content">
+        <div class="header">
+            <div class="origin-label">Origin</div>
+            <div class="destination-label">Destination</div>
+            <div class="actions-label">Actions</div>
+        </div>
+        <div class="main">
+            @foreach (var trip in Model.ToList())
+            {
+                <div class="trip">
+                    <div class="trip-origin">
+                        @(trip.Origin)
+                    </div>
+                    <div class="trip-destination">
+                        @(trip.Destination)
+                    </div>
+                    <div class="trip-actions">
+                        @Html.ActionLink("Edit", "Edit", "Trip", new { id = trip.Id }, new { @class = "edit-button" })
+                        @Html.ActionLink("Delete", "Delete", "Trip", new { id = trip.Id }, new { @class = "delete-button" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

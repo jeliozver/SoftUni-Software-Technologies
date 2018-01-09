@@ -1,0 +1,26 @@
+<div class="wrapper" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="button-holder">
+        <a type="button" href="/create" class="log-button">Create New Trip</a>
+    </div>
+    <div class="content">
+        <div class="header">
+            <div class="origin-label">Origin</div>
+            <div class="destination-label">Destination</div>
+            <div class="actions-label">Actions</div>
+        </div>
+        <div class="main">
+            <th:block th:each="trip : ${trips}">
+                <div class="trip">
+                    <div class="trip-origin" th:text="${trip.origin}">
+                    </div>
+                    <div class="trip-destination" th:text="${trip.destination}">
+                    </div>
+                    <div class="trip-actions">
+                        <a type="button" th:href="@{/edit/{id}(id=${trip.id})}" class="edit-button">Edit</a>
+                        <a type="button" th:href="@{/delete/{id}(id=${trip.id})}" class="delete-button">Delete</a>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
